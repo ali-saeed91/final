@@ -10,8 +10,8 @@ jobs:
     - name: if_pr
       if: github.event.pull_request
       run: |
-        echo An issue was closed
-        echo "${{github.event.issue.number}}"
+        echo An pull request was closed
+        echo "${{github.event.pull_request.number}}"
     - uses: actions/checkout@v3
     - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -19,8 +19,8 @@ jobs:
           -name: Upon Merge Approval Reasign to QA with Label
    
       run: |
-          gh issue reopen "${{ github.event.issue.number }}"
-          gh issue edit "${{ github.event.issue.number }}" --remove-assignee "@me"
-          gh issue edit "${{ github.event.issue.number }}" --remove-label "bug"
-          gh issue edit "${{ github.event.issue.number }}" --add-label "documentation"
-          gh issue edit "${{ github.event.issue.number }}" --add-assignee ali-saeed91
+          gh issue reopen "${{ github.event.pull_request.number }}"
+          gh issue edit "${{ github.event.pull_request.number }}" --remove-assignee "@me"
+          gh issue edit "${{ github.event.pull_request.number }}" --remove-label "bug"
+          gh issue edit "${{ github.event.pull_request.number }}" --add-label "documentation"
+          gh issue edit "${{ github.event.pull_request.number }}" --add-assignee ali-saeed91
