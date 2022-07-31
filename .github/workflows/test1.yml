@@ -29,5 +29,5 @@ jobs:
           gh issue edit "$ISSUENO" --remove-label "bug"
           gh issue edit "$ISSUENO" --add-label "documentation"
           gh issue edit "$ISSUENO" --add-assignee ali-saeed91
-          #issue-number(GithubVariable)= $(echo "$ISSUENO" | xargs)
-          #print issue-number
+          issue-number=$(echo "$ISSUENO" | xargs)
+          echo "$issue-number"
