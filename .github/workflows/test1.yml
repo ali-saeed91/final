@@ -24,5 +24,10 @@ jobs:
           echo "$TEMP"
           ISSUENO=${TEMP#*#}
           echo "$ISSUENO"
-          issue-number(GithubVariable)= $(echo "$ISSUENO" | xargs)
-          print issue-number
+          gh issue reopen "$ISSUENO"
+          gh issue edit "$ISSUENO" --remove-assignee "@me"
+          gh issue edit "$ISSUENO" --remove-label "bug"
+          gh issue edit "$ISSUENO" --add-label "documentation"
+          gh issue edit "$ISSUENO" --add-assignee ali-saeed91
+          #issue-number(GithubVariable)= $(echo "$ISSUENO" | xargs)
+          #print issue-number
