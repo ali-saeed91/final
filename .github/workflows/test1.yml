@@ -24,10 +24,11 @@ jobs:
           echo "$TEMP"
           ISSUENO=${TEMP#*#}
           echo "$ISSUENO"
-          gh issue reopen "$ISSUENO"
-          gh issue edit "$ISSUENO" --remove-assignee "@me"
-          gh issue edit "$ISSUENO" --remove-label "bug"
-          gh issue edit "$ISSUENO" --add-label "documentation"
-          gh issue edit "$ISSUENO" --add-assignee ali-saeed91
           issue-number=$(echo "$ISSUENO" | xargs)
           echo "$issue-number"
+          gh issue reopen "$issue-number"
+          gh issue edit "$issue-number" --remove-assignee "@me"
+          gh issue edit "$issue-number" --remove-label "bug"
+          gh issue edit "$issue-number" --add-label "documentation"
+          gh issue edit "$issue-number" --add-assignee ali-saeed91
+          
