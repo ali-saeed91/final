@@ -11,7 +11,7 @@ jobs:
       if: github.event.pull_request
       run: |
         echo An issue was closed
-        echo ${{github.event.issue.number}}
+        echo "${{github.event.issue.number}}"
     - uses: actions/checkout@v3
     - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
