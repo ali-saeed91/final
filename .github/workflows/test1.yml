@@ -21,8 +21,8 @@ jobs:
       run: |
           gh pr view "${{github.event.pull_request.number}}" > tmp.txt
           TEMP=$(grep -hnr "#" tmp.txt)
-          echo "TEMP"
+          echo "$TEMP"
           ISSUENO=${TEMP#*#}
-          echo "ISSUENO"
+          echo "$ISSUENO"
           issue-number(GithubVariable)= $(echo "$ISSUENO" | xargs)
           print issue-number
