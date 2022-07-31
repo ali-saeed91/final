@@ -19,8 +19,8 @@ jobs:
           -name: Upon Merge Approval Reasign to QA with Label
    
       run: |
-          gh issue reopen "${{ github.event.pull_request.number }}"
-          gh issue edit "${{ github.event.pull_request.number }}" --remove-assignee "@me"
-          gh issue edit "${{ github.event.pull_request.number }}" --remove-label "bug"
-          gh issue edit "${{ github.event.pull_request.number }}" --add-label "documentation"
-          gh issue edit "${{ github.event.pull_request.number }}" --add-assignee ali-saeed91
+          gh pr view "${{github.event.pull_request.number}}" > tmp.txt
+          TEMP=$(grep -hnr "#" tmp.txt)
+          ISSUENO=${TEMP#*#}
+          issue-number(GithubVariable)= $(echo "$ISSUENO" | xargs)
+          print issue-number
